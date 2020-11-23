@@ -1,0 +1,306 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Study note template},
+  pdfauthor={Jung Xue},
+  pdfborder={0 0 0},
+  breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Study note template}
+\author{Jung Xue}
+\date{2020-11-23}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{conference-information}{%
+\chapter*{Conference information}\label{conference-information}}
+\addcontentsline{toc}{chapter}{Conference information}
+
+\textbf{XXXX Conference:}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Time:} xx:00pm/xx/xx/xx
+\item
+  \textbf{Venue:} The university of Auckland 303S-310 \href{}{Map}
+\item
+  \textbf{Registartion:} xx/xx/xx\\
+\item
+  \textbf{Hosted by:} \href{}{Host association website}
+\end{itemize}
+
+\textbf{Keynote Speakers:}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Speaker & topic & Email & Website\tabularnewline
+\midrule
+\endhead
+Joe Smith & Pickles & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & \href{www.google.com}{Uni}\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\textbf{interesting I have meet/noticed}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+People & Field/Job & Contact & Facts\tabularnewline
+\midrule
+\endhead
+Joe Smith & Consultant @ UoA & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & His from New Caledonia\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+\bottomrule
+\end{longtable}
+
+Note: All information disclosed within this conference e-note are intented for personal use.
+
+\hypertarget{speaker-1}{%
+\chapter*{Speaker 1}\label{speaker-1}}
+\addcontentsline{toc}{chapter}{Speaker 1}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-2}{%
+\chapter*{Speaker 2}\label{speaker-2}}
+\addcontentsline{toc}{chapter}{Speaker 2}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-3}{%
+\chapter*{Speaker 3}\label{speaker-3}}
+\addcontentsline{toc}{chapter}{Speaker 3}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-4}{%
+\chapter*{Speaker 4}\label{speaker-4}}
+\addcontentsline{toc}{chapter}{Speaker 4}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-5}{%
+\chapter*{Speaker 5}\label{speaker-5}}
+\addcontentsline{toc}{chapter}{Speaker 5}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\#Speaker 6 \{-\}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-7}{%
+\chapter*{Speaker 7}\label{speaker-7}}
+\addcontentsline{toc}{chapter}{Speaker 7}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-8}{%
+\chapter*{Speaker 8}\label{speaker-8}}
+\addcontentsline{toc}{chapter}{Speaker 8}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-9}{%
+\chapter*{Speaker 9}\label{speaker-9}}
+\addcontentsline{toc}{chapter}{Speaker 9}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-10}{%
+\chapter*{Speaker 10}\label{speaker-10}}
+\addcontentsline{toc}{chapter}{Speaker 10}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-11}{%
+\chapter*{Speaker 11}\label{speaker-11}}
+\addcontentsline{toc}{chapter}{Speaker 11}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-12}{%
+\chapter*{Speaker 12}\label{speaker-12}}
+\addcontentsline{toc}{chapter}{Speaker 12}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-13}{%
+\chapter*{Speaker 13}\label{speaker-13}}
+\addcontentsline{toc}{chapter}{Speaker 13}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-14}{%
+\chapter*{Speaker 14}\label{speaker-14}}
+\addcontentsline{toc}{chapter}{Speaker 14}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-15}{%
+\chapter*{Speaker 15}\label{speaker-15}}
+\addcontentsline{toc}{chapter}{Speaker 15}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-17}{%
+\chapter*{Speaker 17}\label{speaker-17}}
+\addcontentsline{toc}{chapter}{Speaker 17}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-18}{%
+\chapter*{Speaker 18}\label{speaker-18}}
+\addcontentsline{toc}{chapter}{Speaker 18}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-19}{%
+\chapter*{Speaker 19}\label{speaker-19}}
+\addcontentsline{toc}{chapter}{Speaker 19}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{speaker-20}{%
+\chapter*{Speaker 20}\label{speaker-20}}
+\addcontentsline{toc}{chapter}{Speaker 20}
+
+\hypertarget{subsection}{%
+\section{Subsection}\label{subsection}}
+
+\hypertarget{concluding-remarks}{%
+\chapter*{Concluding Remarks}\label{concluding-remarks}}
+\addcontentsline{toc}{chapter}{Concluding Remarks}
+
+What did you learnt by the end of this session/course?
+
+Take home message?
+
+Add 3 questions to ponder.
+
+\hypertarget{how-to-use-rbookdown}{%
+\chapter*{How to use RBookDown}\label{how-to-use-rbookdown}}
+\addcontentsline{toc}{chapter}{How to use RBookDown}
+
+Firstly, you will have to read the \href{https://bookdown.org/yihui/bookdown/}{RBookDown Bible} by YiHui Xie
+
+In essence, you write in a mixture of markdown (For basics), html (to extend on markdown) and latex language (mostly for equations) to create a simple Note.
+
+You can customise your style and theme through your own CSS.
+
+RMarkdown are mostly used to knit e-books(HTML), use TexStudio if you want a proper PDF, it is easier.
+
+\textbf{Here are some useful tips to get started}
+
+1: To add a chapter, just open a R file and save as \texttt{.RMD}. Use number 0 to 99 with a hyphen \texttt{-} to order the RMD files and maybe add a Chapter name so it is easier to select from \texttt{Files} window at bottom right of the R Studio.
+
+2: Code chunks can generate graphical outputs, To insert pictures just use \texttt{include\_graphics} instead of \texttt{\textbackslash{}includegraphics\{\}} or \texttt{!{[}{]}()}. Width can be customised.
+
+\begin{verbatim}
+knitr::include_graphics(rep('images/knit-logo.png', 3))
+\end{verbatim}
+
+3: Use 1 grave accent ` to include the inline code, use 3 grave accent to include a chunk of code.
+
+  \bibliography{references.bib}
+
+\end{document}

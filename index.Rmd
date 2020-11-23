@@ -1,0 +1,57 @@
+--- 
+title: "Conference note template"
+author: "Jung Xue"
+date: "`r Sys.Date()`"
+bibliography: references.bib
+description: Template for conference notes 会议笔记模板
+documentclass: book
+link-citations: yes
+site: bookdown::bookdown_site
+biblio-style: apalike
+---
+# Conference information  {-}
+
+**XXXX Conference:**
+
+- **Time:** xx:00pm/xx/xx/xx 
+- **Venue:** The university of Auckland 303S-310 [Map]()
+- **Registartion:** yes/no 
+- **Hosted by:** [Host association website]() 
+- **Organiser:** [Organiser Email]()
+- **Conference Schedule** [Link Here]()
+
+**Keynote Speakers:**
+
+| Speaker      |topic         | Email        | Website      |
+|:-------------|:-------------|:-------------|:-------------|
+| Joe Smith    |Pickles       | xx@gmail.com | [Uni](www.google.com)  |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+|   |   |   |   |
+
+**interesting I have meet/noticed**
+
+| People       |Field/Job     | Contact      | Facts        |
+|:-------------|:-------------|:-------------|:-------------|
+| Joe Smith    | Consultant @ UoA  | xx@gmail.com | His from New Caledonia |
+|   |   |   |   |
+|   |   |   |   |
+
+
+Note: All information disclosed within this conference e-note are intented for personal use. 
+

@@ -25,32 +25,32 @@ biblio-style: apalike
 | Speaker      |topic         | Email        | Website      |
 |:-------------|:-------------|:-------------|:-------------|
 | Joe Smith    |Pickles       | xx@gmail.com | [Uni](www.google.com)  |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
-|   |   |   |   |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
 
 **interesting I have meet/noticed**
 
 | People       |Field/Job     | Contact      | Facts        |
 |:-------------|:-------------|:-------------|:-------------|
 | Joe Smith    | Consultant @ UoA  | xx@gmail.com | His from New Caledonia |
-|   |   |   |   |
-|   |   |   |   |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
 
 
 Note: All information disclosed within this conference e-note are intented for personal use. 

@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>How to use RBookDown | Study note template</title>
-  <meta name="description" content="Template for study notes 学习笔记模板" />
+  <title>How to use RBookDown | Conference note template</title>
+  <meta name="description" content="Template for conference notes 会议笔记模板" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="How to use RBookDown | Study note template" />
+  <meta property="og:title" content="How to use RBookDown | Conference note template" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Template for study notes 学习笔记模板" />
+  <meta property="og:description" content="Template for conference notes 会议笔记模板" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="How to use RBookDown | Study note template" />
+  <meta name="twitter:title" content="How to use RBookDown | Conference note template" />
   
-  <meta name="twitter:description" content="Template for study notes 学习笔记模板" />
+  <meta name="twitter:description" content="Template for conference notes 会议笔记模板" />
   
 
 <meta name="author" content="Jung Xue" />
 
 
-<meta name="date" content="2020-11-23" />
+<meta name="date" content="2020-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -84,6 +84,8 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="speaker-5.html"><a href="speaker-5.html"><i class="fa fa-check"></i>Speaker 5</a><ul>
 <li class="chapter" data-level="0.5" data-path="speaker-1.html"><a href="speaker-1.html#subsection"><i class="fa fa-check"></i><b>0.5</b> Subsection</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="speaker-6.html"><a href="speaker-6.html"><i class="fa fa-check"></i>Speaker 6</a><ul>
 <li class="chapter" data-level="0.6" data-path="speaker-1.html"><a href="speaker-1.html#subsection"><i class="fa fa-check"></i><b>0.6</b> Subsection</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="speaker-7.html"><a href="speaker-7.html"><i class="fa fa-check"></i>Speaker 7</a><ul>
@@ -112,6 +114,8 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="speaker-15.html"><a href="speaker-15.html"><i class="fa fa-check"></i>Speaker 15</a><ul>
 <li class="chapter" data-level="0.15" data-path="speaker-1.html"><a href="speaker-1.html#subsection"><i class="fa fa-check"></i><b>0.15</b> Subsection</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="speaker-16.html"><a href="speaker-16.html"><i class="fa fa-check"></i>Speaker 16</a><ul>
 <li class="chapter" data-level="0.16" data-path="speaker-1.html"><a href="speaker-1.html#subsection"><i class="fa fa-check"></i><b>0.16</b> Subsection</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="speaker-17.html"><a href="speaker-17.html"><i class="fa fa-check"></i>Speaker 17</a><ul>
@@ -141,7 +145,7 @@
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Study note template</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Conference note template</a>
           </h1>
         </div>
 
@@ -151,15 +155,17 @@
             <section class="normal" id="section-">
 <div id="how-to-use-rbookdown" class="section level1 unnumbered">
 <h1>How to use RBookDown</h1>
-<p>Firstly, you will have to read the <a href="https://bookdown.org/yihui/bookdown/">RBookDown Bible</a> by YiHui Xie</p>
+<p>Firstly, you must read the <a href="https://bookdown.org/yihui/bookdown/">RBookDown Bible</a> by YiHui Xie</p>
 <p>In essence, you write in a mixture of markdown (For basics), html (to extend on markdown) and latex language (mostly for equations) to create a simple Note.</p>
 <p>You can customise your style and theme through your own CSS.</p>
-<p>RMarkdown are mostly used to knit e-books(HTML), use TexStudio if you want a proper PDF, it is easier.</p>
+<p>RMarkdown are mostly preferably used to knit e-books(HTML), use TexStudio if you want a proper printable PDF, Latex will be easier.</p>
 <p><strong>Here are some useful tips to get started</strong></p>
 <p>1: To add a chapter, just open a R file and save as <code>.RMD</code>. Use number 0 to 99 with a hyphen <code>-</code> to order the RMD files and maybe add a Chapter name so it is easier to select from <code>Files</code> window at bottom right of the R Studio.</p>
 <p>2: Code chunks can generate graphical outputs, To insert pictures just use <code>include_graphics</code> instead of <code>\includegraphics{}</code> or <code>![]()</code>. Width can be customised.</p>
 <pre><code>knitr::include_graphics(rep(&#39;images/knit-logo.png&#39;, 3))</code></pre>
 <p>3: Use 1 grave accent ` to include the inline code, use 3 grave accent to include a chunk of code.</p>
+<p>4: use <code>{-}</code> to stop automatic chapter names</p>
+<p>5: Often you have tables, you can copy the table to a excel file and convert table to markdown tables, using <a href="https://www.tablesgenerator.com/markdown_tables">Online Websites</a></p>
 
 </div>
             </section>

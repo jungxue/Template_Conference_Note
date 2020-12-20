@@ -35,7 +35,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={Study note template},
+  pdftitle={Conference note template},
   pdfauthor={Jung Xue},
   pdfborder={0 0 0},
   breaklinks=true}
@@ -76,9 +76,9 @@
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
-\title{Study note template}
+\title{Conference note template}
 \author{Jung Xue}
-\date{2020-11-23}
+\date{2020-11-24}
 
 \begin{document}
 \maketitle
@@ -100,9 +100,13 @@
 \item
   \textbf{Venue:} The university of Auckland 303S-310 \href{}{Map}
 \item
-  \textbf{Registartion:} xx/xx/xx\\
+  \textbf{Registartion:} yes/no
 \item
   \textbf{Hosted by:} \href{}{Host association website}
+\item
+  \textbf{Organiser:} \href{}{Organiser Email}
+\item
+  \textbf{Conference Schedule} \href{}{Link Here}
 \end{itemize}
 
 \textbf{Keynote Speakers:}
@@ -113,6 +117,20 @@ Speaker & topic & Email & Website\tabularnewline
 \midrule
 \endhead
 Joe Smith & Pickles & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & \href{www.google.com}{Uni}\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
 & & &\tabularnewline
 & & &\tabularnewline
 \bottomrule
@@ -126,6 +144,8 @@ People & Field/Job & Contact & Facts\tabularnewline
 \midrule
 \endhead
 Joe Smith & Consultant @ UoA & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & His from New Caledonia\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
 & & &\tabularnewline
 & & &\tabularnewline
 \bottomrule
@@ -168,7 +188,9 @@ Note: All information disclosed within this conference e-note are intented for p
 \hypertarget{subsection}{%
 \section{Subsection}\label{subsection}}
 
-\#Speaker 6 \{-\}
+\hypertarget{speaker-6}{%
+\chapter*{Speaker 6}\label{speaker-6}}
+\addcontentsline{toc}{chapter}{Speaker 6}
 
 \hypertarget{subsection}{%
 \section{Subsection}\label{subsection}}
@@ -236,6 +258,10 @@ Note: All information disclosed within this conference e-note are intented for p
 \hypertarget{subsection}{%
 \section{Subsection}\label{subsection}}
 
+\hypertarget{speaker-16}{%
+\chapter*{Speaker 16}\label{speaker-16}}
+\addcontentsline{toc}{chapter}{Speaker 16}
+
 \hypertarget{subsection}{%
 \section{Subsection}\label{subsection}}
 
@@ -281,13 +307,13 @@ Add 3 questions to ponder.
 \chapter*{How to use RBookDown}\label{how-to-use-rbookdown}}
 \addcontentsline{toc}{chapter}{How to use RBookDown}
 
-Firstly, you will have to read the \href{https://bookdown.org/yihui/bookdown/}{RBookDown Bible} by YiHui Xie
+Firstly, you must read the \href{https://bookdown.org/yihui/bookdown/}{RBookDown Bible} by YiHui Xie
 
 In essence, you write in a mixture of markdown (For basics), html (to extend on markdown) and latex language (mostly for equations) to create a simple Note.
 
 You can customise your style and theme through your own CSS.
 
-RMarkdown are mostly used to knit e-books(HTML), use TexStudio if you want a proper PDF, it is easier.
+RMarkdown are mostly preferably used to knit e-books(HTML), use TexStudio if you want a proper printable PDF, Latex will be easier.
 
 \textbf{Here are some useful tips to get started}
 
@@ -300,6 +326,10 @@ knitr::include_graphics(rep('images/knit-logo.png', 3))
 \end{verbatim}
 
 3: Use 1 grave accent ` to include the inline code, use 3 grave accent to include a chunk of code.
+
+4: use \texttt{\{-\}} to stop automatic chapter names
+
+5: Often you have tables, you can copy the table to a excel file and convert table to markdown tables, using \href{https://www.tablesgenerator.com/markdown_tables}{Online Websites}
 
   \bibliography{references.bib}
 

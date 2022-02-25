@@ -25,3 +25,5 @@ knitr::include_graphics(rep('images/knit-logo.png', 3))
 
 5: Often you have tables, you can copy the table to a excel file and convert table to markdown tables, using [Online Websites](https://www.tablesgenerator.com/markdown_tables)
 
+6: [Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+

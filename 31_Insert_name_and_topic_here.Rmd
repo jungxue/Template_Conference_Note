@@ -1,0 +1,64 @@
+# Speaker N Topic N
+<!-- Format: Joe Smith - Study on flying spaghetti monsters -->
+
+## Abstract {-}
+<!-- Paste topic abstract here, usually can find it in the handout, delete section if there is no abstract -->
+
+Insert abstract here
+
+Insert [link to slide]() if any 
+
+--- 
+
+## Notes {-}
+<!-- Try to use bullet points * as often as possible, speakers slide will be a good reference on structure-->
+<!-- Try to use **bold** for new terminology, package and other important words.                          -->
+<!-- Try to use short hand(i.e. 3 letter for long words) during lecture, came back later to fine-tune            -->
+
+Insert note here
+
+Topic
+
+* point 1
+* point 2
+* point 3
+
+--- 
+
+## Question and Answer {-}
+<!-- There must be 1 line between Q: and A: -->
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+---
+
+## Take home message {-} 
+<!-- maximum 1 message per 20 Minute                                -->
+<!-- short summaries of what you have learnt from this presentation -->
+
+Insert message here. 
+
+---
+
+## Actions {-}
+
+<!-- A table of todo lists for                       -->
+<!-- * to integrate thoughts/ideas inspired          -->
+<!-- * to look into Interesting topics/models raised -->
+<!-- * Add model/package/textbook/bog to collection  -->
+<!-- * Whether or not reaching out to Author         -->
+<!-- * Add link/equations to the note                -->
+<!-- * Add presenter on twitter                      -->
+|   |Action              | Due               | Completed                       |
+|:--|:-------------------|:------------------|:--------------------------------|
+| 1 | Insert action here | DD/MM/YY 00:00 pm |<input type="checkbox" unchecked>|
+| 2 | Insert action here | DD/MM/YY 00:00 pm |<input type="checkbox" unchecked>|
+| 3 | Insert action here | DD/MM/YY 00:00 pm |<input type="checkbox" unchecked>|
+
+

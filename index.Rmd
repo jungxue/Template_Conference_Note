@@ -1,9 +1,9 @@
 --- 
-title: "Conference note template"
-author: "Jung Xue"
+title: "Conference note template"                                               ## Change this to Conference title
+author: "Author: Jung Xue"
 date: "`r Sys.Date()`"
 bibliography: references.bib
-description: Template for conference notes 会议笔记模板
+description: Template for conference notes                                      ## change this to Conference notes for XXX
 documentclass: book
 link-citations: yes
 site: bookdown::bookdown_site
@@ -11,40 +11,42 @@ biblio-style: apalike
 ---
 # Conference information  {-}
 
-**XXXX Conference:**
+**XXXX Conference YYYY:**                                                        <!-- ## Change this to Conference title -->
 
-- **Time:** xx:00pm/xx/xx/xx 
-- **Venue:** The university of Auckland 303S-310 [Map]()
-- **Registartion:** yes/no 
-- **Hosted by:** [Host association website]() 
-- **Organiser:** [Organiser Email]()
-- **Conference Schedule** [Link Here]()
+- **Time:** 
 
-**Keynote Speakers:**
+| Day |Date      | Start:   | End       |
+|:--|:-----------|:---------|:----------|
+| 1 | 01/04/2022 | xx:00 am | xx:00 pm  |
+| 2 | dd/mm/yyyy | xx:00 am | xx:00 pm  |
+| 3 | dd/mm/yyyy | xx:00 am | xx:00 pm  |
+| 4 | dd/mm/yyyy | xx:00 am | xx:00 pm  |
+| 5 | dd/mm/yyyy | xx:00 am | xx:00 pm  |
+| 6 | dd/mm/yyyy | xx:00 am | xx:00 pm  |
+| 7 | dd/mm/yyyy | xx:00 am | xx:00 pm  |
 
-| Speaker      |topic         | Email        | Website      |
+\hfill[Estimated Run time XX hours.]{style="float:right"}
+
+
+* **Venue:** Insert institution and Venue name, location [Map]()
+* **Registration:** Yes [Fees]()
+* **Hosted by:** [Host association website]() 
+* **Organiser:** Organiser name [Insert Organiser Email]()
+* **Conference Schedule** [Insert Link Here]()
+
+**Speakers:**
+
+| Speaker      |topic         | Email        | Personal website / Github |
 |:-------------|:-------------|:-------------|:-------------|
 | Joe Smith    |Pickles       | xx@gmail.com | [Uni](www.google.com)  |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
 |  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
 
-**interesting I have meet/noticed**
+**interesting I have had meet:**
 
-| People       |Field/Job     | Contact      | Facts        |
+| People       |Field/Job     | Contact      | Facts/Info        |
 |:-------------|:-------------|:-------------|:-------------|
 | Joe Smith    | Consultant @ UoA  | xx@gmail.com | His from New Caledonia |
 |  |  |  |  |
@@ -53,5 +55,5 @@ biblio-style: apalike
 |  |  |  |  |
 
 
-Note: All information disclosed within this conference e-note are intented for personal use. 
+Note: this conference e-note are intended for my personal use only. No consent for distribution of sensitive information disclosed within this conference is assumed. 
 

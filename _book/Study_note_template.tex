@@ -1,22 +1,21 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
 ]{book}
-\usepackage{amsmath,amssymb}
 \usepackage{lmodern}
+\usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -38,20 +37,14 @@
 \hypersetup{
   pdftitle={Conference note template},
   pdfauthor={Author: Jung Xue},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
+  pdfborder={0 0 0},
+  breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -60,24 +53,32 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-\usepackage{booktabs}
-\ifluatex
-  \usepackage{selnolig}  % disable illegal ligatures
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
 \fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
 \title{Conference note template}
 \author{Author: Jung Xue}
-\date{2022-02-25}
+\date{2022-05-07}
 
 \begin{document}
 \maketitle
@@ -100,16 +101,16 @@
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-Day & Date & Start: & End \\
+Day & Date & Start: & End\tabularnewline
 \midrule
 \endhead
-1 & 01/04/2022 & xx:00 am & xx:00 pm \\
-2 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
-3 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
-4 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
-5 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
-6 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
-7 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
+1 & 01/04/2022 & xx:00 am & xx:00 pm\tabularnewline
+2 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
+3 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
+4 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
+5 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
+6 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
+7 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -133,14 +134,14 @@ Day & Date & Start: & End \\
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-Speaker & topic & Email & Personal website / Github \\
+Speaker & topic & Email & Personal website / Github\tabularnewline
 \midrule
 \endhead
-Joe Smith & Pickles & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & \href{www.google.com}{Uni} \\
-& & & \\
-& & & \\
-& & & \\
-& & & \\
+Joe Smith & Pickles & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & \href{www.google.com}{Uni}\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -148,14 +149,14 @@ Joe Smith & Pickles & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & \hr
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-People & Field/Job & Contact & Facts/Info \\
+People & Field/Job & Contact & Facts/Info\tabularnewline
 \midrule
 \endhead
-Joe Smith & Consultant @ UoA & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & His from New Caledonia \\
-& & & \\
-& & & \\
-& & & \\
-& & & \\
+Joe Smith & Consultant @ UoA & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & His from New Caledonia\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
+& & &\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -222,17 +223,14 @@ Insert message here.
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-& Action & Due & Completed \\
+& Action & Due & Completed\tabularnewline
 \midrule
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm & \\
-2 & Insert action here & DD/MM/YY 00:00 pm & \\
-3 & Insert action here & DD/MM/YY 00:00 pm & \\
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
 \bottomrule
 \end{longtable}
-
-\hypertarget{speaker-n-topic-n-1}{%
-\chapter{Speaker N Topic N}\label{speaker-n-topic-n-1}}
 
 \hypertarget{abstract-1}{%
 \section*{Abstract}\label{abstract-1}}
@@ -292,17 +290,14 @@ Insert message here.
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-& Action & Due & Completed \\
+& Action & Due & Completed\tabularnewline
 \midrule
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm & \\
-2 & Insert action here & DD/MM/YY 00:00 pm & \\
-3 & Insert action here & DD/MM/YY 00:00 pm & \\
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
 \bottomrule
 \end{longtable}
-
-\hypertarget{speaker-n-topic-n-2}{%
-\chapter{Speaker N Topic N}\label{speaker-n-topic-n-2}}
 
 \hypertarget{abstract-2}{%
 \section*{Abstract}\label{abstract-2}}
@@ -362,17 +357,14 @@ Insert message here.
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-& Action & Due & Completed \\
+& Action & Due & Completed\tabularnewline
 \midrule
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm & \\
-2 & Insert action here & DD/MM/YY 00:00 pm & \\
-3 & Insert action here & DD/MM/YY 00:00 pm & \\
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
 \bottomrule
 \end{longtable}
-
-\hypertarget{speaker-n-topic-n-3}{%
-\chapter{Speaker N Topic N}\label{speaker-n-topic-n-3}}
 
 \hypertarget{abstract-3}{%
 \section*{Abstract}\label{abstract-3}}
@@ -432,17 +424,14 @@ Insert message here.
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-& Action & Due & Completed \\
+& Action & Due & Completed\tabularnewline
 \midrule
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm & \\
-2 & Insert action here & DD/MM/YY 00:00 pm & \\
-3 & Insert action here & DD/MM/YY 00:00 pm & \\
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
 \bottomrule
 \end{longtable}
-
-\hypertarget{speaker-n-topic-n-4}{%
-\chapter{Speaker N Topic N}\label{speaker-n-topic-n-4}}
 
 \hypertarget{abstract-4}{%
 \section*{Abstract}\label{abstract-4}}
@@ -502,17 +491,14 @@ Insert message here.
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-& Action & Due & Completed \\
+& Action & Due & Completed\tabularnewline
 \midrule
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm & \\
-2 & Insert action here & DD/MM/YY 00:00 pm & \\
-3 & Insert action here & DD/MM/YY 00:00 pm & \\
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
 \bottomrule
 \end{longtable}
-
-\hypertarget{speaker-n-topic-n-5}{%
-\chapter{Speaker N Topic N}\label{speaker-n-topic-n-5}}
 
 \hypertarget{abstract-5}{%
 \section*{Abstract}\label{abstract-5}}
@@ -572,190 +558,2973 @@ Insert message here.
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule
-& Action & Due & Completed \\
+& Action & Due & Completed\tabularnewline
 \midrule
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm & \\
-2 & Insert action here & DD/MM/YY 00:00 pm & \\
-3 & Insert action here & DD/MM/YY 00:00 pm & \\
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
 \bottomrule
 \end{longtable}
 
-\hypertarget{speaker-7}{%
-\chapter*{Speaker 7}\label{speaker-7}}
-\addcontentsline{toc}{chapter}{Speaker 7}
+\hypertarget{abstract-6}{%
+\section*{Abstract}\label{abstract-6}}
+\addcontentsline{toc}{section}{Abstract}
 
-\hypertarget{subsection}{%
-\section{Subsection}\label{subsection}}
+Insert abstract here
 
-\hypertarget{speaker-8}{%
-\chapter*{Speaker 8}\label{speaker-8}}
-\addcontentsline{toc}{chapter}{Speaker 8}
+Insert \href{}{link to slide} if any
 
-\hypertarget{subsection-1}{%
-\section{Subsection}\label{subsection-1}}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{speaker-9}{%
-\chapter*{Speaker 9}\label{speaker-9}}
-\addcontentsline{toc}{chapter}{Speaker 9}
+\hypertarget{notes-6}{%
+\section*{Notes}\label{notes-6}}
+\addcontentsline{toc}{section}{Notes}
 
-\hypertarget{subsection-2}{%
-\section{Subsection}\label{subsection-2}}
+Insert note here
 
-\hypertarget{speaker-10}{%
-\chapter*{Speaker 10}\label{speaker-10}}
-\addcontentsline{toc}{chapter}{Speaker 10}
+Topic
 
-\hypertarget{subsection-3}{%
-\section{Subsection}\label{subsection-3}}
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
 
-\hypertarget{speaker-11}{%
-\chapter*{Speaker 11}\label{speaker-11}}
-\addcontentsline{toc}{chapter}{Speaker 11}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{subsection-4}{%
-\section{Subsection}\label{subsection-4}}
+\hypertarget{question-and-answer-6}{%
+\section*{Question and Answer}\label{question-and-answer-6}}
+\addcontentsline{toc}{section}{Question and Answer}
 
-\hypertarget{speaker-12}{%
-\chapter*{Speaker 12}\label{speaker-12}}
-\addcontentsline{toc}{chapter}{Speaker 12}
+Q:
 
-\hypertarget{subsection-5}{%
-\section{Subsection}\label{subsection-5}}
+A:
 
-\hypertarget{speaker-13}{%
-\chapter*{Speaker 13}\label{speaker-13}}
-\addcontentsline{toc}{chapter}{Speaker 13}
+Q:
 
-\hypertarget{subsection-6}{%
-\section{Subsection}\label{subsection-6}}
+A:
 
-\hypertarget{speaker-14}{%
-\chapter*{Speaker 14}\label{speaker-14}}
-\addcontentsline{toc}{chapter}{Speaker 14}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{subsection-7}{%
-\section{Subsection}\label{subsection-7}}
+\hypertarget{take-home-message-6}{%
+\section*{Take home message}\label{take-home-message-6}}
+\addcontentsline{toc}{section}{Take home message}
 
-\hypertarget{speaker-15}{%
-\chapter*{Speaker 15}\label{speaker-15}}
-\addcontentsline{toc}{chapter}{Speaker 15}
+Insert message here.
 
-\hypertarget{subsection-8}{%
-\section{Subsection}\label{subsection-8}}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{speaker-16}{%
-\chapter*{Speaker 16}\label{speaker-16}}
-\addcontentsline{toc}{chapter}{Speaker 16}
+\hypertarget{actions-6}{%
+\section*{Actions}\label{actions-6}}
+\addcontentsline{toc}{section}{Actions}
 
-\hypertarget{subsection-9}{%
-\section{Subsection}\label{subsection-9}}
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
 
-\hypertarget{speaker-17}{%
-\chapter*{Speaker 17}\label{speaker-17}}
-\addcontentsline{toc}{chapter}{Speaker 17}
+\hypertarget{abstract-7}{%
+\section*{Abstract}\label{abstract-7}}
+\addcontentsline{toc}{section}{Abstract}
 
-\hypertarget{subsection-10}{%
-\section{Subsection}\label{subsection-10}}
+Insert abstract here
 
-\hypertarget{speaker-18}{%
-\chapter*{Speaker 18}\label{speaker-18}}
-\addcontentsline{toc}{chapter}{Speaker 18}
+Insert \href{}{link to slide} if any
 
-\hypertarget{subsection-11}{%
-\section{Subsection}\label{subsection-11}}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{speaker-19}{%
-\chapter*{Speaker 19}\label{speaker-19}}
-\addcontentsline{toc}{chapter}{Speaker 19}
+\hypertarget{notes-7}{%
+\section*{Notes}\label{notes-7}}
+\addcontentsline{toc}{section}{Notes}
 
-\hypertarget{subsection-12}{%
-\section{Subsection}\label{subsection-12}}
+Insert note here
 
-\hypertarget{speaker-20}{%
-\chapter*{Speaker 20}\label{speaker-20}}
-\addcontentsline{toc}{chapter}{Speaker 20}
+Topic
 
-\hypertarget{subsection-13}{%
-\section{Subsection}\label{subsection-13}}
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
 
-\hypertarget{speaker-20-1}{%
-\chapter*{Speaker 20}\label{speaker-20-1}}
-\addcontentsline{toc}{chapter}{Speaker 20}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{subsection-14}{%
-\section{Subsection}\label{subsection-14}}
+\hypertarget{question-and-answer-7}{%
+\section*{Question and Answer}\label{question-and-answer-7}}
+\addcontentsline{toc}{section}{Question and Answer}
 
-\hypertarget{speaker-2}{%
-\chapter*{Speaker 2}\label{speaker-2}}
-\addcontentsline{toc}{chapter}{Speaker 2}
+Q:
 
-\hypertarget{subsection-15}{%
-\section{Subsection}\label{subsection-15}}
+A:
 
-\hypertarget{speaker-3}{%
-\chapter*{Speaker 3}\label{speaker-3}}
-\addcontentsline{toc}{chapter}{Speaker 3}
+Q:
 
-\hypertarget{subsection-16}{%
-\section{Subsection}\label{subsection-16}}
+A:
 
-\hypertarget{speaker-4}{%
-\chapter*{Speaker 4}\label{speaker-4}}
-\addcontentsline{toc}{chapter}{Speaker 4}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{subsection-17}{%
-\section{Subsection}\label{subsection-17}}
+\hypertarget{take-home-message-7}{%
+\section*{Take home message}\label{take-home-message-7}}
+\addcontentsline{toc}{section}{Take home message}
 
-\hypertarget{speaker-5}{%
-\chapter*{Speaker 5}\label{speaker-5}}
-\addcontentsline{toc}{chapter}{Speaker 5}
+Insert message here.
 
-\hypertarget{subsection-18}{%
-\section{Subsection}\label{subsection-18}}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{speaker-6}{%
-\chapter*{Speaker 6}\label{speaker-6}}
-\addcontentsline{toc}{chapter}{Speaker 6}
+\hypertarget{actions-7}{%
+\section*{Actions}\label{actions-7}}
+\addcontentsline{toc}{section}{Actions}
 
-\hypertarget{subsection-19}{%
-\section{Subsection}\label{subsection-19}}
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
 
-\hypertarget{speaker-7-1}{%
-\chapter*{Speaker 7}\label{speaker-7-1}}
-\addcontentsline{toc}{chapter}{Speaker 7}
+\hypertarget{abstract-8}{%
+\section*{Abstract}\label{abstract-8}}
+\addcontentsline{toc}{section}{Abstract}
 
-\hypertarget{subsection-20}{%
-\section{Subsection}\label{subsection-20}}
+Insert abstract here
 
-\hypertarget{speaker-8-1}{%
-\chapter*{Speaker 8}\label{speaker-8-1}}
-\addcontentsline{toc}{chapter}{Speaker 8}
+Insert \href{}{link to slide} if any
 
-\hypertarget{subsection-21}{%
-\section{Subsection}\label{subsection-21}}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\hypertarget{speaker-9-1}{%
-\chapter*{Speaker 9}\label{speaker-9-1}}
-\addcontentsline{toc}{chapter}{Speaker 9}
+\hypertarget{notes-8}{%
+\section*{Notes}\label{notes-8}}
+\addcontentsline{toc}{section}{Notes}
 
-\hypertarget{subsection-22}{%
-\section{Subsection}\label{subsection-22}}
+Insert note here
 
-\hypertarget{speaker-10-1}{%
-\chapter*{Speaker 10}\label{speaker-10-1}}
-\addcontentsline{toc}{chapter}{Speaker 10}
+Topic
 
-\hypertarget{subsection-23}{%
-\section{Subsection}\label{subsection-23}}
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-8}{%
+\section*{Question and Answer}\label{question-and-answer-8}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-8}{%
+\section*{Take home message}\label{take-home-message-8}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-8}{%
+\section*{Actions}\label{actions-8}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-9}{%
+\section*{Abstract}\label{abstract-9}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-9}{%
+\section*{Notes}\label{notes-9}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-9}{%
+\section*{Question and Answer}\label{question-and-answer-9}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-9}{%
+\section*{Take home message}\label{take-home-message-9}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-9}{%
+\section*{Actions}\label{actions-9}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-10}{%
+\section*{Abstract}\label{abstract-10}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-10}{%
+\section*{Notes}\label{notes-10}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-10}{%
+\section*{Question and Answer}\label{question-and-answer-10}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-10}{%
+\section*{Take home message}\label{take-home-message-10}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-10}{%
+\section*{Actions}\label{actions-10}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-11}{%
+\section*{Abstract}\label{abstract-11}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-11}{%
+\section*{Notes}\label{notes-11}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-11}{%
+\section*{Question and Answer}\label{question-and-answer-11}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-11}{%
+\section*{Take home message}\label{take-home-message-11}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-11}{%
+\section*{Actions}\label{actions-11}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-12}{%
+\section*{Abstract}\label{abstract-12}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-12}{%
+\section*{Notes}\label{notes-12}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-12}{%
+\section*{Question and Answer}\label{question-and-answer-12}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-12}{%
+\section*{Take home message}\label{take-home-message-12}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-12}{%
+\section*{Actions}\label{actions-12}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-13}{%
+\section*{Abstract}\label{abstract-13}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-13}{%
+\section*{Notes}\label{notes-13}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-13}{%
+\section*{Question and Answer}\label{question-and-answer-13}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-13}{%
+\section*{Take home message}\label{take-home-message-13}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-13}{%
+\section*{Actions}\label{actions-13}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-14}{%
+\section*{Abstract}\label{abstract-14}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-14}{%
+\section*{Notes}\label{notes-14}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-14}{%
+\section*{Question and Answer}\label{question-and-answer-14}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-14}{%
+\section*{Take home message}\label{take-home-message-14}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-14}{%
+\section*{Actions}\label{actions-14}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-15}{%
+\section*{Abstract}\label{abstract-15}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-15}{%
+\section*{Notes}\label{notes-15}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-15}{%
+\section*{Question and Answer}\label{question-and-answer-15}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-15}{%
+\section*{Take home message}\label{take-home-message-15}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-15}{%
+\section*{Actions}\label{actions-15}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-16}{%
+\section*{Abstract}\label{abstract-16}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-16}{%
+\section*{Notes}\label{notes-16}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-16}{%
+\section*{Question and Answer}\label{question-and-answer-16}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-16}{%
+\section*{Take home message}\label{take-home-message-16}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-16}{%
+\section*{Actions}\label{actions-16}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-17}{%
+\section*{Abstract}\label{abstract-17}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-17}{%
+\section*{Notes}\label{notes-17}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-17}{%
+\section*{Question and Answer}\label{question-and-answer-17}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-17}{%
+\section*{Take home message}\label{take-home-message-17}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-17}{%
+\section*{Actions}\label{actions-17}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-18}{%
+\section*{Abstract}\label{abstract-18}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-18}{%
+\section*{Notes}\label{notes-18}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-18}{%
+\section*{Question and Answer}\label{question-and-answer-18}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-18}{%
+\section*{Take home message}\label{take-home-message-18}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-18}{%
+\section*{Actions}\label{actions-18}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-19}{%
+\section*{Abstract}\label{abstract-19}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-19}{%
+\section*{Notes}\label{notes-19}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-19}{%
+\section*{Question and Answer}\label{question-and-answer-19}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-19}{%
+\section*{Take home message}\label{take-home-message-19}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-19}{%
+\section*{Actions}\label{actions-19}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-20}{%
+\section*{Abstract}\label{abstract-20}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-20}{%
+\section*{Notes}\label{notes-20}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-20}{%
+\section*{Question and Answer}\label{question-and-answer-20}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-20}{%
+\section*{Take home message}\label{take-home-message-20}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-20}{%
+\section*{Actions}\label{actions-20}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-21}{%
+\section*{Abstract}\label{abstract-21}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-21}{%
+\section*{Notes}\label{notes-21}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-21}{%
+\section*{Question and Answer}\label{question-and-answer-21}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-21}{%
+\section*{Take home message}\label{take-home-message-21}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-21}{%
+\section*{Actions}\label{actions-21}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-22}{%
+\section*{Abstract}\label{abstract-22}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-22}{%
+\section*{Notes}\label{notes-22}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-22}{%
+\section*{Question and Answer}\label{question-and-answer-22}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-22}{%
+\section*{Take home message}\label{take-home-message-22}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-22}{%
+\section*{Actions}\label{actions-22}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-23}{%
+\section*{Abstract}\label{abstract-23}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-23}{%
+\section*{Notes}\label{notes-23}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-23}{%
+\section*{Question and Answer}\label{question-and-answer-23}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-23}{%
+\section*{Take home message}\label{take-home-message-23}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-23}{%
+\section*{Actions}\label{actions-23}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-24}{%
+\section*{Abstract}\label{abstract-24}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-24}{%
+\section*{Notes}\label{notes-24}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-24}{%
+\section*{Question and Answer}\label{question-and-answer-24}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-24}{%
+\section*{Take home message}\label{take-home-message-24}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-24}{%
+\section*{Actions}\label{actions-24}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-25}{%
+\section*{Abstract}\label{abstract-25}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-25}{%
+\section*{Notes}\label{notes-25}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-25}{%
+\section*{Question and Answer}\label{question-and-answer-25}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-25}{%
+\section*{Take home message}\label{take-home-message-25}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-25}{%
+\section*{Actions}\label{actions-25}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-26}{%
+\section*{Abstract}\label{abstract-26}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-26}{%
+\section*{Notes}\label{notes-26}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-26}{%
+\section*{Question and Answer}\label{question-and-answer-26}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-26}{%
+\section*{Take home message}\label{take-home-message-26}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-26}{%
+\section*{Actions}\label{actions-26}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-27}{%
+\section*{Abstract}\label{abstract-27}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-27}{%
+\section*{Notes}\label{notes-27}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-27}{%
+\section*{Question and Answer}\label{question-and-answer-27}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-27}{%
+\section*{Take home message}\label{take-home-message-27}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-27}{%
+\section*{Actions}\label{actions-27}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-28}{%
+\section*{Abstract}\label{abstract-28}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-28}{%
+\section*{Notes}\label{notes-28}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-28}{%
+\section*{Question and Answer}\label{question-and-answer-28}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-28}{%
+\section*{Take home message}\label{take-home-message-28}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-28}{%
+\section*{Actions}\label{actions-28}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-29}{%
+\section*{Abstract}\label{abstract-29}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-29}{%
+\section*{Notes}\label{notes-29}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-29}{%
+\section*{Question and Answer}\label{question-and-answer-29}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-29}{%
+\section*{Take home message}\label{take-home-message-29}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-29}{%
+\section*{Actions}\label{actions-29}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{speaker-n-topic-n-1}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-1}}
+
+\hypertarget{abstract-30}{%
+\section*{Abstract}\label{abstract-30}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-30}{%
+\section*{Notes}\label{notes-30}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-30}{%
+\section*{Question and Answer}\label{question-and-answer-30}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-30}{%
+\section*{Take home message}\label{take-home-message-30}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-30}{%
+\section*{Actions}\label{actions-30}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-31}{%
+\section*{Abstract}\label{abstract-31}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-31}{%
+\section*{Notes}\label{notes-31}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-31}{%
+\section*{Question and Answer}\label{question-and-answer-31}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-31}{%
+\section*{Take home message}\label{take-home-message-31}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-31}{%
+\section*{Actions}\label{actions-31}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-32}{%
+\section*{Abstract}\label{abstract-32}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-32}{%
+\section*{Notes}\label{notes-32}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-32}{%
+\section*{Question and Answer}\label{question-and-answer-32}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-32}{%
+\section*{Take home message}\label{take-home-message-32}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-32}{%
+\section*{Actions}\label{actions-32}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-33}{%
+\section*{Abstract}\label{abstract-33}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-33}{%
+\section*{Notes}\label{notes-33}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-33}{%
+\section*{Question and Answer}\label{question-and-answer-33}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-33}{%
+\section*{Take home message}\label{take-home-message-33}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-33}{%
+\section*{Actions}\label{actions-33}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-34}{%
+\section*{Abstract}\label{abstract-34}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-34}{%
+\section*{Notes}\label{notes-34}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-34}{%
+\section*{Question and Answer}\label{question-and-answer-34}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-34}{%
+\section*{Take home message}\label{take-home-message-34}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-34}{%
+\section*{Actions}\label{actions-34}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-35}{%
+\section*{Abstract}\label{abstract-35}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-35}{%
+\section*{Notes}\label{notes-35}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-35}{%
+\section*{Question and Answer}\label{question-and-answer-35}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-35}{%
+\section*{Take home message}\label{take-home-message-35}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-35}{%
+\section*{Actions}\label{actions-35}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-36}{%
+\section*{Abstract}\label{abstract-36}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-36}{%
+\section*{Notes}\label{notes-36}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-36}{%
+\section*{Question and Answer}\label{question-and-answer-36}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-36}{%
+\section*{Take home message}\label{take-home-message-36}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-36}{%
+\section*{Actions}\label{actions-36}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-37}{%
+\section*{Abstract}\label{abstract-37}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-37}{%
+\section*{Notes}\label{notes-37}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-37}{%
+\section*{Question and Answer}\label{question-and-answer-37}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-37}{%
+\section*{Take home message}\label{take-home-message-37}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-37}{%
+\section*{Actions}\label{actions-37}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-38}{%
+\section*{Abstract}\label{abstract-38}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-38}{%
+\section*{Notes}\label{notes-38}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-38}{%
+\section*{Question and Answer}\label{question-and-answer-38}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-38}{%
+\section*{Take home message}\label{take-home-message-38}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-38}{%
+\section*{Actions}\label{actions-38}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-39}{%
+\section*{Abstract}\label{abstract-39}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-39}{%
+\section*{Notes}\label{notes-39}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-39}{%
+\section*{Question and Answer}\label{question-and-answer-39}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-39}{%
+\section*{Take home message}\label{take-home-message-39}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-39}{%
+\section*{Actions}\label{actions-39}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-40}{%
+\section*{Abstract}\label{abstract-40}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-40}{%
+\section*{Notes}\label{notes-40}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-40}{%
+\section*{Question and Answer}\label{question-and-answer-40}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-40}{%
+\section*{Take home message}\label{take-home-message-40}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-40}{%
+\section*{Actions}\label{actions-40}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-41}{%
+\section*{Abstract}\label{abstract-41}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-41}{%
+\section*{Notes}\label{notes-41}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-41}{%
+\section*{Question and Answer}\label{question-and-answer-41}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-41}{%
+\section*{Take home message}\label{take-home-message-41}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-41}{%
+\section*{Actions}\label{actions-41}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-42}{%
+\section*{Abstract}\label{abstract-42}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-42}{%
+\section*{Notes}\label{notes-42}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-42}{%
+\section*{Question and Answer}\label{question-and-answer-42}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-42}{%
+\section*{Take home message}\label{take-home-message-42}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-42}{%
+\section*{Actions}\label{actions-42}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-43}{%
+\section*{Abstract}\label{abstract-43}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-43}{%
+\section*{Notes}\label{notes-43}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-43}{%
+\section*{Question and Answer}\label{question-and-answer-43}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-43}{%
+\section*{Take home message}\label{take-home-message-43}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-43}{%
+\section*{Actions}\label{actions-43}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-44}{%
+\section*{Abstract}\label{abstract-44}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-44}{%
+\section*{Notes}\label{notes-44}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-44}{%
+\section*{Question and Answer}\label{question-and-answer-44}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-44}{%
+\section*{Take home message}\label{take-home-message-44}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-44}{%
+\section*{Actions}\label{actions-44}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-45}{%
+\section*{Abstract}\label{abstract-45}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-45}{%
+\section*{Notes}\label{notes-45}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-45}{%
+\section*{Question and Answer}\label{question-and-answer-45}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-45}{%
+\section*{Take home message}\label{take-home-message-45}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-45}{%
+\section*{Actions}\label{actions-45}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-46}{%
+\section*{Abstract}\label{abstract-46}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-46}{%
+\section*{Notes}\label{notes-46}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-46}{%
+\section*{Question and Answer}\label{question-and-answer-46}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-46}{%
+\section*{Take home message}\label{take-home-message-46}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-46}{%
+\section*{Actions}\label{actions-46}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-47}{%
+\section*{Abstract}\label{abstract-47}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-47}{%
+\section*{Notes}\label{notes-47}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-47}{%
+\section*{Question and Answer}\label{question-and-answer-47}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-47}{%
+\section*{Take home message}\label{take-home-message-47}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-47}{%
+\section*{Actions}\label{actions-47}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-48}{%
+\section*{Abstract}\label{abstract-48}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-48}{%
+\section*{Notes}\label{notes-48}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-48}{%
+\section*{Question and Answer}\label{question-and-answer-48}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-48}{%
+\section*{Take home message}\label{take-home-message-48}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-48}{%
+\section*{Actions}\label{actions-48}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\hypertarget{abstract-49}{%
+\section*{Abstract}\label{abstract-49}}
+\addcontentsline{toc}{section}{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{notes-49}{%
+\section*{Notes}\label{notes-49}}
+\addcontentsline{toc}{section}{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{question-and-answer-49}{%
+\section*{Question and Answer}\label{question-and-answer-49}}
+\addcontentsline{toc}{section}{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{take-home-message-49}{%
+\section*{Take home message}\label{take-home-message-49}}
+\addcontentsline{toc}{section}{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{actions-49}{%
+\section*{Actions}\label{actions-49}}
+\addcontentsline{toc}{section}{Actions}
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+& Action & Due & Completed\tabularnewline
+\midrule
+\endhead
+1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
+\bottomrule
+\end{longtable}
 
 \hypertarget{concluding-remarks}{%
 \chapter*{Concluding Remarks}\label{concluding-remarks}}
 \addcontentsline{toc}{chapter}{Concluding Remarks}
 
-What did you learnt by the end of this session/course?
+What did you learnt by the end of this conferences
 
-Take home message?
+Latest trend in industry/field.
 
 Add 3 questions to ponder.
 

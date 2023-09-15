@@ -1,7 +1,7 @@
 # Speaker N Topic N
 <!-- Format: Joe Smith - Study on flying spaghetti monsters -->
 
-## Abstract {-}
+**Abstract**
 <!-- Paste topic abstract here, usually can find it in the handout, delete section if there is no abstract -->
 
 Insert abstract here
@@ -10,7 +10,7 @@ Insert [link to slide]() if any
 
 --- 
 
-## Notes {-}
+**Notes**
 <!-- Try to use bullet points * as often as possible, speakers slide will be a good reference on structure-->
 <!-- Try to use **bold** for new terminology, package and other important words.                          -->
 <!-- Try to use short hand(i.e. 3 letter for long words) during lecture, came back later to fine-tune            -->
@@ -25,7 +25,7 @@ Topic
 
 --- 
 
-## Question and Answer {-}
+**Question and Answer**
 <!-- There must be 1 line between Q: and A: -->
 
 Q:
@@ -38,7 +38,7 @@ A:
 
 ---
 
-## Take home message {-} 
+**Take home message**
 <!-- maximum 1 message per 20 Minute                                -->
 <!-- short summaries of what you have learnt from this presentation -->
 
@@ -46,7 +46,7 @@ Insert message here.
 
 ---
 
-## Actions {-}
+**Actions**
 
 <!-- A table of todo lists for                       -->
 <!-- * to integrate thoughts/ideas inspired          -->

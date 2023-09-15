@@ -1,21 +1,25 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
 ]{book}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
-  \usepackage{unicode-math}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
@@ -32,19 +36,17 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Conference note template},
-  pdfauthor={Author: Jung Xue},
-  pdfborder={0 0 0},
-  breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx,grffile}
+\usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -53,32 +55,32 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-  \let\oldparagraph\paragraph
-  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-  \let\oldsubparagraph\subparagraph
-  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
 \usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Template\_Conference\_Note},
+  pdfauthor={Author: Jung Xue},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{Conference note template}
+\title{Template\_Conference\_Note}
 \author{Author: Jung Xue}
-\date{2022-05-07}
+\date{Last Updated: 2023-09-15}
 
 \begin{document}
 \maketitle
@@ -100,18 +102,19 @@
 \end{itemize}
 
 \begin{longtable}[]{@{}llll@{}}
-\toprule
-Day & Date & Start: & End\tabularnewline
-\midrule
+\toprule\noalign{}
+Day & Date & Start: & End \\
+\midrule\noalign{}
 \endhead
-1 & 01/04/2022 & xx:00 am & xx:00 pm\tabularnewline
-2 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
-3 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
-4 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
-5 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
-6 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
-7 & dd/mm/yyyy & xx:00 am & xx:00 pm\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & 01/04/2022 & xx:00 am & xx:00 pm \\
+2 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
+3 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
+4 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
+5 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
+6 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
+7 & dd/mm/yyyy & xx:00 am & xx:00 pm \\
 \end{longtable}
 
 \hfill[Estimated Run time XX hours.]{style="float:right"}
@@ -132,38 +135,134 @@ Day & Date & Start: & End\tabularnewline
 
 \textbf{Speakers:}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-Speaker & topic & Email & Personal website / Github\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Speaker
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+topic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Email
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Personal website / Github
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-Joe Smith & Pickles & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & \href{www.google.com}{Uni}\tabularnewline
-& & &\tabularnewline
-& & &\tabularnewline
-& & &\tabularnewline
-& & &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+Joe Smith & Pickles & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & \href{www.google.com}{Uni} \\
+& & & \\
+& & & \\
+& & & \\
+& & & \\
 \end{longtable}
 
 \textbf{interesting I have had meet:}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-People & Field/Job & Contact & Facts/Info\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+People
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Field/Job
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Contact
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Facts/Info
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-Joe Smith & Consultant @ UoA & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & His from New Caledonia\tabularnewline
-& & &\tabularnewline
-& & &\tabularnewline
-& & &\tabularnewline
-& & &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+Joe Smith & Consultant @ UoA & \href{mailto:xx@gmail.com}{\nolinkurl{xx@gmail.com}} & His from New Caledonia \\
+& & & \\
+& & & \\
+& & & \\
+& & & \\
 \end{longtable}
-
-Note: this conference e-note are intended for my personal use only. No consent for distribution of sensitive information disclosed within this conference is assumed.
 
 \hypertarget{speaker-n-topic-n}{%
 \chapter{Speaker N Topic N}\label{speaker-n-topic-n}}
+
+\textbf{Abstract}
+
+Insert abstract here
+
+Insert \href{}{link to slide} if any
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Notes}
+
+Insert note here
+
+Topic
+
+\begin{itemize}
+\tightlist
+\item
+  point 1
+\item
+  point 2
+\item
+  point 3
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Question and Answer}
+
+Q:
+
+A:
+
+Q:
+
+A:
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Take home message}
+
+Insert message here.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Actions}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
+\end{longtable}
+
+\hypertarget{speaker-n-topic-n-1}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-1}}
 
 \hypertarget{abstract}{%
 \section*{Abstract}\label{abstract}}
@@ -221,16 +320,31 @@ Insert message here.
 \section*{Actions}\label{actions}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-2}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-2}}
 
 \hypertarget{abstract-1}{%
 \section*{Abstract}\label{abstract-1}}
@@ -288,16 +402,31 @@ Insert message here.
 \section*{Actions}\label{actions-1}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-3}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-3}}
 
 \hypertarget{abstract-2}{%
 \section*{Abstract}\label{abstract-2}}
@@ -355,16 +484,31 @@ Insert message here.
 \section*{Actions}\label{actions-2}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-4}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-4}}
 
 \hypertarget{abstract-3}{%
 \section*{Abstract}\label{abstract-3}}
@@ -422,16 +566,31 @@ Insert message here.
 \section*{Actions}\label{actions-3}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-5}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-5}}
 
 \hypertarget{abstract-4}{%
 \section*{Abstract}\label{abstract-4}}
@@ -489,16 +648,31 @@ Insert message here.
 \section*{Actions}\label{actions-4}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-6}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-6}}
 
 \hypertarget{abstract-5}{%
 \section*{Abstract}\label{abstract-5}}
@@ -556,16 +730,31 @@ Insert message here.
 \section*{Actions}\label{actions-5}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-7}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-7}}
 
 \hypertarget{abstract-6}{%
 \section*{Abstract}\label{abstract-6}}
@@ -623,16 +812,31 @@ Insert message here.
 \section*{Actions}\label{actions-6}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-8}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-8}}
 
 \hypertarget{abstract-7}{%
 \section*{Abstract}\label{abstract-7}}
@@ -690,16 +894,31 @@ Insert message here.
 \section*{Actions}\label{actions-7}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-9}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-9}}
 
 \hypertarget{abstract-8}{%
 \section*{Abstract}\label{abstract-8}}
@@ -757,16 +976,31 @@ Insert message here.
 \section*{Actions}\label{actions-8}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-10}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-10}}
 
 \hypertarget{abstract-9}{%
 \section*{Abstract}\label{abstract-9}}
@@ -824,16 +1058,31 @@ Insert message here.
 \section*{Actions}\label{actions-9}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-11}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-11}}
 
 \hypertarget{abstract-10}{%
 \section*{Abstract}\label{abstract-10}}
@@ -891,16 +1140,31 @@ Insert message here.
 \section*{Actions}\label{actions-10}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-12}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-12}}
 
 \hypertarget{abstract-11}{%
 \section*{Abstract}\label{abstract-11}}
@@ -958,15 +1222,27 @@ Insert message here.
 \section*{Actions}\label{actions-11}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-12}{%
@@ -1025,15 +1301,27 @@ Insert message here.
 \section*{Actions}\label{actions-12}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-13}{%
@@ -1092,15 +1380,27 @@ Insert message here.
 \section*{Actions}\label{actions-13}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-14}{%
@@ -1159,15 +1459,27 @@ Insert message here.
 \section*{Actions}\label{actions-14}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-15}{%
@@ -1226,15 +1538,27 @@ Insert message here.
 \section*{Actions}\label{actions-15}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-16}{%
@@ -1293,15 +1617,27 @@ Insert message here.
 \section*{Actions}\label{actions-16}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-17}{%
@@ -1360,15 +1696,27 @@ Insert message here.
 \section*{Actions}\label{actions-17}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-18}{%
@@ -1427,15 +1775,27 @@ Insert message here.
 \section*{Actions}\label{actions-18}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-19}{%
@@ -1494,15 +1854,27 @@ Insert message here.
 \section*{Actions}\label{actions-19}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-20}{%
@@ -1561,15 +1933,27 @@ Insert message here.
 \section*{Actions}\label{actions-20}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-21}{%
@@ -1628,15 +2012,27 @@ Insert message here.
 \section*{Actions}\label{actions-21}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-22}{%
@@ -1695,15 +2091,27 @@ Insert message here.
 \section*{Actions}\label{actions-22}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-23}{%
@@ -1762,15 +2170,27 @@ Insert message here.
 \section*{Actions}\label{actions-23}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-24}{%
@@ -1829,15 +2249,27 @@ Insert message here.
 \section*{Actions}\label{actions-24}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-25}{%
@@ -1896,15 +2328,27 @@ Insert message here.
 \section*{Actions}\label{actions-25}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-26}{%
@@ -1963,15 +2407,27 @@ Insert message here.
 \section*{Actions}\label{actions-26}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-27}{%
@@ -2030,15 +2486,27 @@ Insert message here.
 \section*{Actions}\label{actions-27}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-28}{%
@@ -2097,16 +2565,31 @@ Insert message here.
 \section*{Actions}\label{actions-28}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
+
+\hypertarget{speaker-n-topic-n-13}{%
+\chapter{Speaker N Topic N}\label{speaker-n-topic-n-13}}
 
 \hypertarget{abstract-29}{%
 \section*{Abstract}\label{abstract-29}}
@@ -2164,19 +2647,28 @@ Insert message here.
 \section*{Actions}\label{actions-29}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
-
-\hypertarget{speaker-n-topic-n-1}{%
-\chapter{Speaker N Topic N}\label{speaker-n-topic-n-1}}
 
 \hypertarget{abstract-30}{%
 \section*{Abstract}\label{abstract-30}}
@@ -2234,15 +2726,27 @@ Insert message here.
 \section*{Actions}\label{actions-30}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-31}{%
@@ -2301,15 +2805,27 @@ Insert message here.
 \section*{Actions}\label{actions-31}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-32}{%
@@ -2368,15 +2884,27 @@ Insert message here.
 \section*{Actions}\label{actions-32}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-33}{%
@@ -2435,15 +2963,27 @@ Insert message here.
 \section*{Actions}\label{actions-33}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-34}{%
@@ -2502,15 +3042,27 @@ Insert message here.
 \section*{Actions}\label{actions-34}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-35}{%
@@ -2569,15 +3121,27 @@ Insert message here.
 \section*{Actions}\label{actions-35}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-36}{%
@@ -2636,15 +3200,27 @@ Insert message here.
 \section*{Actions}\label{actions-36}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-37}{%
@@ -2703,15 +3279,27 @@ Insert message here.
 \section*{Actions}\label{actions-37}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-38}{%
@@ -2770,15 +3358,27 @@ Insert message here.
 \section*{Actions}\label{actions-38}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-39}{%
@@ -2837,15 +3437,27 @@ Insert message here.
 \section*{Actions}\label{actions-39}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-40}{%
@@ -2904,15 +3516,27 @@ Insert message here.
 \section*{Actions}\label{actions-40}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-41}{%
@@ -2971,15 +3595,27 @@ Insert message here.
 \section*{Actions}\label{actions-41}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-42}{%
@@ -3038,15 +3674,27 @@ Insert message here.
 \section*{Actions}\label{actions-42}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-43}{%
@@ -3105,15 +3753,27 @@ Insert message here.
 \section*{Actions}\label{actions-43}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-44}{%
@@ -3172,15 +3832,27 @@ Insert message here.
 \section*{Actions}\label{actions-44}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-45}{%
@@ -3239,15 +3911,27 @@ Insert message here.
 \section*{Actions}\label{actions-45}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-46}{%
@@ -3306,15 +3990,27 @@ Insert message here.
 \section*{Actions}\label{actions-46}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-47}{%
@@ -3373,15 +4069,27 @@ Insert message here.
 \section*{Actions}\label{actions-47}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{abstract-48}{%
@@ -3440,82 +4148,27 @@ Insert message here.
 \section*{Actions}\label{actions-48}}
 \addcontentsline{toc}{section}{Actions}
 
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0400}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4400}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Due
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Completed
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
-\end{longtable}
-
-\hypertarget{abstract-49}{%
-\section*{Abstract}\label{abstract-49}}
-\addcontentsline{toc}{section}{Abstract}
-
-Insert abstract here
-
-Insert \href{}{link to slide} if any
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\hypertarget{notes-49}{%
-\section*{Notes}\label{notes-49}}
-\addcontentsline{toc}{section}{Notes}
-
-Insert note here
-
-Topic
-
-\begin{itemize}
-\tightlist
-\item
-  point 1
-\item
-  point 2
-\item
-  point 3
-\end{itemize}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\hypertarget{question-and-answer-49}{%
-\section*{Question and Answer}\label{question-and-answer-49}}
-\addcontentsline{toc}{section}{Question and Answer}
-
-Q:
-
-A:
-
-Q:
-
-A:
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\hypertarget{take-home-message-49}{%
-\section*{Take home message}\label{take-home-message-49}}
-\addcontentsline{toc}{section}{Take home message}
-
-Insert message here.
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\hypertarget{actions-49}{%
-\section*{Actions}\label{actions-49}}
-\addcontentsline{toc}{section}{Actions}
-
-\begin{longtable}[]{@{}llll@{}}
-\toprule
-& Action & Due & Completed\tabularnewline
-\midrule
-\endhead
-1 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-2 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-3 & Insert action here & DD/MM/YY 00:00 pm &\tabularnewline
-\bottomrule
+\bottomrule\noalign{}
+\endlastfoot
+1 & Insert action here & DD/MM/YY 00:00 pm & \\
+2 & Insert action here & DD/MM/YY 00:00 pm & \\
+3 & Insert action here & DD/MM/YY 00:00 pm & \\
 \end{longtable}
 
 \hypertarget{concluding-remarks}{%

@@ -1,9 +1,9 @@
 --- 
-title: "Conference note template"                                               ## Change this to Conference title
+title:  "Template_Conference_Note "             ## Change this to Conference title
 author: "Author: Jung Xue"
-date: "`r Sys.Date()`"
+date:   "Last Updated: `r Sys.Date()`"
 bibliography: references.bib
-description: Template for conference notes                                      ## change this to Conference notes for XXX
+description: Template for conference notes      ## change this to Conference notes for XXX
 documentclass: book
 link-citations: yes
 site: bookdown::bookdown_site
@@ -11,7 +11,7 @@ biblio-style: apalike
 ---
 # Conference information  {-}
 
-**XXXX Conference YYYY:**                                                        <!-- ## Change this to Conference title -->
+**XXXX Conference YYYY:**                         <!-- ## Change this to Conference title -->
 
 - **Time:** 
 
@@ -54,6 +54,4 @@ biblio-style: apalike
 |  |  |  |  |
 |  |  |  |  |
 
-
-Note: this conference e-note are intended for my personal use only. No consent for distribution of sensitive information disclosed within this conference is assumed. 
 

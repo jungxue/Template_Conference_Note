@@ -1,3 +1,6 @@
+# Speaker N Topic N
+<!-- Format: Joe Smith - Study on flying spaghetti monsters -->
+
 ## Abstract {-}
 <!-- Paste topic abstract here, usually can find it in the handout, delete section if there is no abstract -->
 
